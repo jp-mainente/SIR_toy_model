@@ -80,19 +80,29 @@ for z = 1:scenarios
     end
 end
 
-figure("Name","Infection Comparison","Color","w")
+figure("Name","Infection Comparison")
+hold on
 h1 = plot(I_lt(:,1));
-hold on
 h2 = plot(I_lt(:,2));
-hold on
 h3 = plot(I_lt(:,3));
-hold on
 h4 = plot(I_lt(:,4));
+
+
+hleg = legend([h1 h2 h3 h4],strcat("$\beta = ",num2str(beta_vec(1),2),"$" ), ...
+                            strcat("$\beta = ",num2str(beta_vec(2),2),"$" ), ...
+                            strcat("$\beta = ",num2str(beta_vec(3),2),"$" ), ...
+                            strcat("$\beta = ",num2str(beta_vec(4),2),"$" ));
+set(gcf,'color','w')
+set(h1,'color','k','linewidth',2)
+set(h2,'color','r','linewidth',2 )
+set(h3,'color','g','linewidth',2 )
+set(h4,'color','b','linewidth',2 )
+set(gca,'TickLabelInterpreter','latex')
+set(gca,'FontSize',12)
+set(gca,'layer','top')
+set(hleg,'Interpreter','latex','Location','northeast')
+xlabel('Time Path','Interpreter','latex','FontSize',14)
+ylabel('Pop. Infected','Interpreter','latex','FontSize',14)
+
+
 hold off
-
-legend([h1 h2 h3 h4],["$\beta$ = " num2str(beta_vec(1))],...
-                      ["$\beta$ = " num2str(beta_vec(2))],...
-                      ["$\beta$ = " num2str(beta_vec(3))],...
-                      ["$\beta$ = " num2str(beta_vec(4))],"Interpreter","latex")
-
-
