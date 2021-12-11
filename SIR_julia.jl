@@ -78,3 +78,9 @@ plot(i_lt,
     xlabel = "t", 
     ylabel = "Infected",
     title = "Comparison Between Infection Rate")
+plot(r_lt,
+    label = labels,
+    xlabel = "t", 
+    ylabel = "Recovered",
+    title = "Comparison Between Infection Rate",
+    legend =:bottomright)
