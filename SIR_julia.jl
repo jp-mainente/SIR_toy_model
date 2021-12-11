@@ -2,7 +2,7 @@
 -------------------------------------------------------------------------
                             SIR Model
 -------------------------------------------------------------------------
-This is a matlab implementation of the SIR model as exposed by Sargent &
+This is a Julia implementation of the SIR model as exposed by Sargent &
 Stachurski.
 
 It simulates the evolution of Covid based on the transition of states
@@ -60,19 +60,19 @@ for j in 2:t_max
     dif_i            = sig .* e - gamma .* i;
 
     # update the states
-     s = s + dif_s;
-     e = e + dif_e;
-     i = i + dif_i;
-     r = repeat([1],size(effect_rep_rate)[2]) - (s + e + i);
+     s              = s + dif_s;
+     e              = e + dif_e;
+     i              = i + dif_i;
+     r              = repeat([1],size(effect_rep_rate)[2]) - (s + e + i);
 
     #save to vector
-    s_lt[j,:] = s;
-    e_lt[j,:] = e;
-    i_lt[j,:] = i;
-    r_lt[j,:] = r;
+    s_lt[j,:]       = s;
+    e_lt[j,:]       = e;
+    i_lt[j,:]       = i;
+    r_lt[j,:]       = r;
 end
 
-labels = ["R = $r" for r in effect_rep_rate];
+labels              = ["R = $r" for r in effect_rep_rate];
 plot(i_lt,
     label = labels,
     xlabel = "t", 
